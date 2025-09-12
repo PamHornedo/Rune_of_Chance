@@ -40,6 +40,16 @@ const showStats = player => {
 // Main function that runs the adventure game
 const startAdventure = () => {
 // Your logic to start the adventure.
+const name = prompt("Hello player! What's your name?");
+console.log(`My name is ${name}`);
+
+const species = prompt("Are you a dragon or a human?");
+
+if (species === "human" || species === "Human") {
+  console.log(`I am a ${species}`);
+} else if (species === "dragon" || species === "Dragon") {
+  console.log(`I am a ${species}`);
+} else {}
 };
 
 // Add event listener to the start button to begin the adventure when clicked
