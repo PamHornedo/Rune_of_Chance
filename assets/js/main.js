@@ -4,6 +4,8 @@
 class Player {
   constructor(name, species) {
     // Set up player properties
+    this.name = name;
+    this.species = species;
   }
   // Method to add a rune to the player's collection
   addRune(rune) {
@@ -40,16 +42,21 @@ const showStats = player => {
 // Main function that runs the adventure game
 const startAdventure = () => {
 // Your logic to start the adventure.
-const name = prompt("Hello player! What's your name?");
-console.log(`My name is ${name}`);
+let name = prompt("Hello player! What's your name?");
+if (!name) {
+  alert("Name is required to start your adventure!");
+}
+  console.log(`My name is ${name}`);
 
 const species = prompt("Are you a dragon or a human?");
-
-if (species === "human" || species === "Human") {
+if (species !== "human") {
   console.log(`I am a ${species}`);
-} else if (species === "dragon" || species === "Dragon") {
+  alert
+  ("Please enter 'dragon' or 'human' for your species.");
+} else if (species !== "dragon") {
   console.log(`I am a ${species}`);
-} else {}
+  return;
+}
 };
 
 // Add event listener to the start button to begin the adventure when clicked
