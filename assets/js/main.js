@@ -32,7 +32,7 @@ const runeChoices = [
 ];
 
 // Utility function: returns a random integer from minimum up to (but not including) max
-const randInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const randInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 // Utility function: displays the player's stats in the HTML page
 const showStats = player => {
@@ -62,10 +62,26 @@ while (gameLoop === true) {
   let random1 = randInt(0,4);
   let random2 = randInt(0,4);
   console.log(`${random1} and ${random2}`);
+
+  playerInput = prompt(`Please choose a rune: ${runeChoices[random1].name}(1) or ${runeChoices[random2].name}(2)`);
+  if (playerInput != 1 && playerInput != 2) {
+    alert("Please pick 1 or 2");
+  }
+  console.log(`Player input: ${playerInput}`);
+  
+  computerInput = randInt(1,2);
+  if (playerInput == computerInput) {
+    if (computerInput === 1) {
+      alert(`Congrats! You chose the right rune. Power unlocked: ${runeChoices[random1].power}`);
+    } else {
+      alert(`Congrats! You chose the right rune. Power unlocked: ${runeChoices[random2].power}`);
+    }
+  } else {
+    alert("Oops! You chose the wrong rune.");
+  }
+
   gameLoop = false;
 }
-
-
 };
 
 // Add event listener to the start button to begin the adventure when clicked
