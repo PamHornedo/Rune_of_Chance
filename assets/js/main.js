@@ -6,6 +6,8 @@ class Player {
     // Set up player properties
     this.name = name;
     this.species = species;
+    this.runes = [];
+    this.xp = 0;
   }
   // Method to add a rune to the player's collection
   addRune(rune) {
@@ -13,9 +15,13 @@ class Player {
   }
   // Method to lose 1 XP (never goes below 0)
   loseXP() {
+    if (this.xp > 0) {
+      this.xp -= 1;
+    }
   }
   // Method to gain 1 XP
   gainXP() {
+    this.xp += 1;
   }
   // Method to get a summary of the player's stats
   getStats() {
@@ -56,6 +62,8 @@ if (species !== "human" && species !== "dragon") {
 }
 console.log(`I am a ${species}`);
 
+const player = new Player(name, species);
+
 // Start of game loop
 let gameLoop = true;
 while (gameLoop === true) {
@@ -72,13 +80,21 @@ while (gameLoop === true) {
   computerInput = randInt(1,2);
   if (playerInput == computerInput) {
     if (computerInput === 1) {
+      player.addRune(runeChoices[random1].name);
+      player.gainXP();
       alert(`Congrats! You chose the right rune. Power unlocked: ${runeChoices[random1].power}`);
     } else {
+      player.addRune(runeChoices[random2].name);
+      player.gainXP();
       alert(`Congrats! You chose the right rune. Power unlocked: ${runeChoices[random2].power}`);
     }
   } else {
     alert("Oops! You chose the wrong rune.");
+    player.loseXP();
   }
+
+  
+  console.log(player.getStats());
 
   gameLoop = false;
 }
