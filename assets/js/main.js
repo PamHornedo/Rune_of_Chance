@@ -82,21 +82,24 @@ while (gameLoop === true) {
     if (computerInput === 1) {
       player.addRune(runeChoices[random1].name);
       player.gainXP();
-      alert(`Congrats! You chose the right rune. Power unlocked: ${runeChoices[random1].power}`);
+      alert(`Congrats! You chose the right rune. Power unlocked: ${runeChoices[random1].power}. You earned 1 XP!`);
     } else {
       player.addRune(runeChoices[random2].name);
       player.gainXP();
-      alert(`Congrats! You chose the right rune. Power unlocked: ${runeChoices[random2].power}`);
+      alert(`Congrats! You chose the right rune. Power unlocked: ${runeChoices[random2].power}. You earned 1 XP!`);
     }
   } else {
-    alert("Oops! You chose the wrong rune.");
+    alert("Oops! You chose the wrong rune. You lost 1 XP.");
     player.loseXP();
   }
-
-  
+    
   console.log(player.getStats());
-
-  gameLoop = false;
+  
+  if (confirm("Do you want to continue your adventure?")) {
+    gameLoop = true;
+  } else {
+    gameLoop = false;
+  }
 }
 };
 
